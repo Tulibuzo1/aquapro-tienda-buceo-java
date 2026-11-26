@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaPro | Equipamiento Técnico de Buceo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --ap-navy: #0B192C;
+            --ap-deep: #132A46;
+            --ap-cyan: #0096C7;
+            --ap-bg: #F8FAFC;
+            --ap-border: #E2E8F0;
+            --ap-text: #1E293B;
+            --ap-muted: #64748B;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--ap-bg);
+            color: var(--ap-text);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .navbar-aquapro {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid var(--ap-border);
+            padding: 0.9rem 0;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+            color: var(--ap-navy);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .brand-dot {
+            width: 11px;
+            height: 11px;
+            background-color: var(--ap-cyan);
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .nav-link-custom {
+            color: var(--ap-muted);
+            font-weight: 500;
+            font-size: 0.92rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .nav-link-custom:hover, .nav-link-custom.active {
+            color: var(--ap-navy);
+            background-color: #F1F5F9;
+            font-weight: 600;
+        }
+
+        .hero-strip {
+            background: linear-gradient(135deg, var(--ap-navy) 0%, var(--ap-deep) 100%);
+            color: #FFFFFF;
+            padding: 3rem 0;
+        }
+
+        .filter-chip {
+            border: 1px solid var(--ap-border);
+            background: #FFFFFF;
+            color: var(--ap-text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.45rem 1.05rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-chip:hover {
+            border-color: var(--ap-navy);
+        }
+
+        .filter-chip.active {
+            background-color: var(--ap-navy);
+            color: #FFFFFF;
+            border-color: var(--ap-navy);
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border: 1px solid var(--ap-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: #94A3B8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        .product-img-wrap {
+            position: relative;
+            height: 200px;
+            background-color: #E2E8F0;
+            overflow: hidden;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-brand {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--ap-navy);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.28rem 0.65rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .btn-ap-primary {
+            background-color: var(--ap-navy);
+            color: #FFFFFF;
+            border: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-ap-primary:hover:not(:disabled) {
+            background-color: var(--ap-cyan);
+            color: #FFFFFF;
+        }
+
+        .btn-ap-primary:disabled {
+            background-color: #CBD5E1;
+            color: #64748B;
+        }
+
+        .search-input {
+            border: 1px solid var(--ap-border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.9rem 0.5rem 2.3rem;
+            background-color: #FFFFFF;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--ap-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 150, 199, 0.15);
+        }
+
+        .panel-box {
+            background: #FFFFFF;
+            border: 1px solid var(--ap-border);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar-aquapro sticky-top">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-4">
+            <a href="#" class="brand-logo" onclick="cambiarVista('catalogo'); return false;">
+                <span class="brand-dot"></span> AquaPro
+            </a>
+            <nav class="d-none d-md-flex gap-1">
+                <button class="nav-link-custom active" id="nav-catalogo" onclick="cambiarVista('catalogo')">Catálogo</button>
+                <button class="nav-link-custom" id="nav-pedidos" onclick="cambiarVista('pedidos')">Pedidos</button>
+                <button class="nav-link-custom" id="nav-admin" onclick="cambiarVista('admin')">Inventario</button>
+            </nav>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <a href="/swagger-ui/index.html" target="_blank" class="btn btn-sm btn-outline-secondary d-none d-sm-inline-flex align-items-center gap-1" style="border-radius: 8px; padding: 0.45rem 0.85rem;">
+                <i class="bi bi-braces"></i> API Docs
+            </a>
+            <button class="btn btn-ap-primary d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito">
+                <i class="bi bi-bag"></i>
+                <span>Bolsa</span>
+                <span class="badge bg-info text-dark rounded-pill" id="contador-carrito">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="bg-white border-bottom d-md-none py-2">
+    <div class="container d-flex justify-content-around">
+        <button class="nav-link-custom active" onclick="cambiarVista('catalogo')">Catálogo</button>
+        <button class="nav-link-custom" onclick="cambiarVista('pedidos')">Pedidos</button>
+        <button class="nav-link-custom" onclick="cambiarVista('admin')">Inventario</button>
+    </div>
+</div>
+
+<section class="hero-strip" id="hero-banner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="text-uppercase fw-semibold d-block mb-1" style="font-size: 0.75rem; letter-spacing: 0.12em; color: #38BDF8;">
+                    Temporada 2026 · Equipamiento Certificado
+                </span>
+                <h1 class="fw-bold mb-2" style="font-size: 2.2rem; letter-spacing: -0.02em;">
+                    Precisión bajo la superficie.
+                </h1>
+                <p class="mb-0 text-white-50" style="font-size: 1rem; max-width: 580px;">
+                    Reguladores, computadoras de inmersión, trajes térmicos y óptica subacuática con stock real en tienda.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container my-4 pb-5">
+
+    <!-- VISTA 1: CATÁLOGO -->
+    <section id="vista-catalogo">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <div class="d-flex flex-wrap gap-2" id="filtros-categorias">
+                <button class="filter-chip active" onclick="seleccionarCategoria('', this)">Todos</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Máscaras', this)">Máscaras</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Aletas', this)">Aletas</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Trajes', this)">Trajes</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Reguladores', this)">Reguladores</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Accesorios', this)">Computadoras y Accesorios</button>
+            </div>
+
+            <div class="position-relative" style="min-width: 260px;">
+                <i class="bi bi-search position-absolute text-muted" style="left: 12px; top: 50%; transform: translateY(-50%); font-size: 0.85rem;"></i>
+                <input type="text" id="buscador-productos" class="form-control search-input" placeholder="Buscar equipo o marca..." oninput="filtrarLocalmente()">
+            </div>
+        </div>
+
+        <div class="row g-4" id="grid-productos"></div>
+    </section>
+
+    <!-- VISTA 2: PEDIDOS -->
+    <section id="vista-pedidos" class="d-none">
+        <div class="mb-3">
+            <h3 class="fw-bold mb-1">Registro de Operaciones</h3>
+            <p class="text-muted small mb-0">Comprobantes emitidos y control de devoluciones de stock.</p>
+        </div>
+        <div class="panel-box table-responsive">
+            <table class="table align-middle mb-0">
+                <thead>
+                    <tr class="text-muted small text-uppercase">
+                        <th>Orden</th>
+                        <th>Buzo</th>
+                        <th>Equipamiento</th>
+                        <th>Importe</th>
+                        <th>Estado</th>
+                        <th class="text-end">Gestión</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-pedidos"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- VISTA 3: INVENTARIO / ADMIN -->
+    <section id="vista-admin" class="d-none">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="panel-box">
+                    <h4 class="fw-bold mb-1">Alta de Equipamiento</h4>
+                    <p class="text-muted small mb-4">Ingresá un nuevo artículo al catálogo de AquaPro.</p>
+                    <form id="form-producto" onsubmit="crearProducto(event)">
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold">Modelo / Nombre técnico</label>
+                            <input type="text" id="prod-nombre" class="form-control" required placeholder="Ej: Chaleco Hydros Pro">
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Fabricante</label>
+                                <input type="text" id="prod-marca" class="form-control" required placeholder="Ej: Scubapro">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Categoría</label>
+                                <select id="prod-categoria" class="form-select">
+                                    <option value="Máscaras">Máscaras</option>
+                                    <option value="Aletas">Aletas</option>
+                                    <option value="Trajes">Trajes</option>
+                                    <option value="Reguladores">Reguladores</option>
+                                    <option value="Accesorios">Accesorios</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Talle / Conexión</label>
+                                <input type="text" id="prod-talle" class="form-control" value="Único" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Precio (ARS)</label>
+                                <input type="number" id="prod-precio" class="form-control" required min="1">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Unidades</label>
+                                <input type="number" id="prod-stock" class="form-control" required min="0">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-ap-primary w-100 py-2">Guardar en inventario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- OFFCANVAS BOLSA -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" style="width: 400px;">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-bold">Bolsa de Compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <div class="mb-3">
+            <label class="form-label small fw-semibold text-muted">Cliente / Certificación</label>
+            <select id="select-cliente" class="form-select form-select-sm"></select>
+        </div>
+
+        <div id="lista-carrito" class="flex-grow-1 overflow-auto">
+            <div class="text-center text-muted py-5 small">Tu bolsa está vacía.</div>
+        </div>
+
+        <div class="border-top pt-3 mt-3">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Total a abonar</span>
+                <span class="fs-4 fw-bold" style="color: var(--ap-navy);" id="total-carrito">$0</span>
+            </div>
+            <button class="btn btn-ap-primary w-100 py-2" onclick="confirmarPedido()">
+                Finalizar orden
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body" id="toast-mensaje">Operación realizada</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,833 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Pro Dive Shop · Equipamiento de buceo</title>
+    <meta name="description" content="Reguladores, trajes, computadoras y accesorios de buceo. Asesoramiento real y envíos a todo el país.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --ink: #1C2B27;
+            --ink-soft: #3D4F47;
+            --kelp: #1E4438;
+            --ocean: #2B5D6E;
+            --coral: #D95B34;
+            --coral-dark: #B8451F;
+            --sand: #F2EBDD;
+            --cream: #FBF8F0;
+            --line: #E0D6C3;
+            --line-strong: #CFC3AA;
+            --muted: #6D6A5E;
+        }
+
+        * { -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--sand);
+            color: var(--ink);
+            font-size: 15px;
+        }
+
+        h1, h2, .serif {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        a { color: var(--kelp); }
+
+        /* ---------- Announcement bar ---------- */
+        .announcement {
+            background: var(--kelp);
+            color: var(--cream);
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+            padding: 0.55rem 0;
+            text-align: center;
+        }
+        .announcement span + span::before {
+            content: "·";
+            margin: 0 0.75rem;
+            opacity: 0.5;
+        }
+
+        /* ---------- Header ---------- */
+        .site-header {
+            background: var(--cream);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand-logo {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.35rem;
+            color: var(--ink);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.55rem;
+        }
+        .brand-logo:hover { color: var(--kelp); }
+
+        .brand-tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--muted);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            transform: translateY(-1px);
+        }
+
+        .nav-link-custom {
+            color: var(--ink-soft);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 4px;
+            border: none;
+            background: transparent;
+            transition: color 0.15s, background 0.15s;
+        }
+        .nav-link-custom:hover {
+            color: var(--ink);
+            background: rgba(30, 68, 56, 0.06);
+        }
+        .nav-link-custom.active {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .btn-ink {
+            background: var(--ink);
+            color: var(--cream);
+            border: none;
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 4px;
+            transition: background 0.15s;
+        }
+        .btn-ink:hover:not(:disabled) {
+            background: var(--kelp);
+            color: var(--cream);
+        }
+
+        .cart-count {
+            background: var(--coral);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.12rem 0.5rem;
+            border-radius: 999px;
+            min-width: 1.4rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Mobile nav */
+        .mobile-nav {
+            background: var(--cream);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.25rem 0;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            color: var(--cream);
+            padding: 4rem 0 3.5rem;
+            background-image:
+                linear-gradient(115deg, rgba(28, 43, 39, 0.88) 0%, rgba(30, 68, 56, 0.72) 55%, rgba(43, 93, 110, 0.6) 100%),
+                url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1800&q=80');
+            background-size: cover;
+            background-position: center 40%;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #C8E0D9;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            color: var(--cream);
+            font-size: clamp(2rem, 4.5vw, 3.1rem);
+            line-height: 1.05;
+            margin-bottom: 1.1rem;
+            font-weight: 500;
+        }
+
+        .hero-sub {
+            color: rgba(251, 248, 240, 0.82);
+            font-size: 1.02rem;
+            max-width: 500px;
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: rgba(251, 248, 240, 0.72);
+        }
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .hero-meta i { color: var(--coral); font-size: 0.9rem; }
+
+        /* ---------- Filters ---------- */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .filter-chip {
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink-soft);
+            font-size: 0.84rem;
+            font-weight: 500;
+            padding: 0.42rem 0.95rem;
+            border-radius: 4px;
+            transition: all 0.15s;
+        }
+        .filter-chip:hover {
+            border-color: var(--ink-soft);
+            color: var(--ink);
+        }
+        .filter-chip.active {
+            background: var(--ink);
+            color: var(--cream);
+            border-color: var(--ink);
+        }
+
+        .search-wrap { position: relative; min-width: 240px; }
+        .search-wrap i {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        .search-input {
+            border: 1px solid var(--line);
+            background: var(--cream);
+            border-radius: 4px;
+            font-size: 0.88rem;
+            padding: 0.5rem 0.9rem 0.5rem 2.1rem;
+            width: 100%;
+            color: var(--ink);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--ink-soft);
+            box-shadow: 0 0 0 3px rgba(30, 68, 56, 0.08);
+        }
+
+        /* ---------- Product cards ---------- */
+        .product-card {
+            background: var(--cream);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            border-color: var(--line-strong);
+            transform: translateY(-2px);
+        }
+
+        .product-img-wrap {
+            aspect-ratio: 4 / 3;
+            background: var(--sand);
+            overflow: hidden;
+        }
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            padding: 1rem 1.05rem 1.05rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-eyebrow {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+
+        .product-name {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: 1.06rem;
+            line-height: 1.3;
+            color: var(--ink);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 0.85rem;
+        }
+        .product-meta .is-out { color: var(--coral); font-weight: 600; }
+        .product-meta .is-in  { color: var(--kelp); font-weight: 500; }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--line);
+            margin-top: auto;
+            gap: 0.5rem;
+        }
+
+        .product-price {
+            font-family: 'Fraunces', serif;
+            font-size: 1.18rem;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1;
+        }
+
+        .product-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-buy {
+            background: var(--ink);
+            color: var(--cream);
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.45rem 0.85rem;
+            border-radius: 4px;
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+        .btn-buy:hover:not(:disabled) { background: var(--coral); }
+        .btn-buy:disabled {
+            background: var(--line);
+            color: var(--muted);
+            cursor: not-allowed;
+        }
+
+        .btn-delete {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            padding: 0.35rem 0.45rem;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.15s, color 0.15s, background 0.15s;
+            font-size: 0.75rem;
+        }
+        .btn-delete:hover {
+            color: var(--coral);
+            background: rgba(217, 91, 52, 0.1);
+        }
+        .product-card:hover .btn-delete { opacity: 1; }
+        @media (hover: none) {
+            .btn-delete { opacity: 0.4; }
+        }
+
+        /* ---------- Empty states ---------- */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--muted);
+        }
+        .empty-state p:first-child {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+        }
+
+        /* ---------- Panel / Form ---------- */
+        .panel-box {
+            background: var(--cream);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 1.75rem;
+        }
+
+        .form-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.9rem;
+            background: var(--sand);
+            color: var(--ink);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--ink-soft);
+            box-shadow: 0 0 0 3px rgba(30, 68, 56, 0.08);
+            background: var(--cream);
+        }
+
+        /* ---------- Table ---------- */
+        .table { margin-bottom: 0; font-size: 0.88rem; }
+        .table thead th {
+            background: var(--sand);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            border-bottom: 1px solid var(--line);
+            padding: 0.85rem 1rem;
+        }
+        .table tbody td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--line);
+            vertical-align: middle;
+        }
+        .table tbody tr:last-child td { border-bottom: none; }
+
+        .badge-estado {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 3px;
+            letter-spacing: 0.03em;
+        }
+        .badge-pagado {
+            background: rgba(30, 68, 56, 0.1);
+            color: var(--kelp);
+        }
+        .badge-anulado {
+            background: rgba(217, 91, 52, 0.1);
+            color: var(--coral-dark);
+        }
+
+        /* ---------- Cart (offcanvas) ---------- */
+        .offcanvas {
+            background: var(--cream);
+            border-left: 1px solid var(--line);
+        }
+        .offcanvas-title {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--line);
+            gap: 1rem;
+        }
+        .cart-item-name {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.15rem;
+        }
+        .cart-item-price {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+        .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .cart-qty button {
+            width: 26px;
+            height: 26px;
+            border: 1px solid var(--line);
+            background: var(--sand);
+            color: var(--ink);
+            border-radius: 3px;
+            font-size: 0.85rem;
+            line-height: 1;
+            padding: 0;
+            transition: background 0.15s;
+        }
+        .cart-qty button:hover { background: var(--cream); border-color: var(--ink-soft); }
+        .cart-qty span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            min-width: 1.5rem;
+            text-align: center;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- Toast ---------- */
+        .toast {
+            background: var(--ink);
+            color: var(--cream);
+            border-radius: 4px;
+            border: none;
+            font-size: 0.88rem;
+        }
+
+        /* ---------- Footer ---------- */
+        .site-footer {
+            background: var(--kelp);
+            color: rgba(251, 248, 240, 0.75);
+            padding: 3.5rem 0 2rem;
+            margin-top: 4rem;
+            font-size: 0.88rem;
+        }
+        .site-footer .brand-logo { color: var(--cream); }
+        .site-footer h6 {
+            color: var(--cream);
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0;
+        }
+        .site-footer a {
+            color: rgba(251, 248, 240, 0.75);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .site-footer a:hover { color: var(--cream); }
+        .site-footer ul { list-style: none; padding: 0; }
+        .site-footer li { margin-bottom: 0.5rem; }
+        .site-footer .certs {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .site-footer .certs span {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid rgba(251, 248, 240, 0.2);
+            border-radius: 3px;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(251, 248, 240, 0.12);
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            font-size: 0.78rem;
+            color: rgba(251, 248, 240, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announcement">
+    <div class="container">
+        <span>Mar del Plata</span><span>Envíos a todo el país</span><span>Lun a Sáb · 10 a 19h</span>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="site-header sticky-top">
+    <div class="container py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-4">
+                <a href="#" class="brand-logo" onclick="cambiarVista('catalogo'); return false;">
+                    Aqua Pro <span class="brand-tag">Dive Shop</span>
+                </a>
+                <nav class="d-none d-md-flex gap-1">
+                    <button class="nav-link-custom active" id="nav-catalogo" onclick="cambiarVista('catalogo')">Catálogo</button>
+                    <button class="nav-link-custom" id="nav-pedidos" onclick="cambiarVista('pedidos')">Pedidos</button>
+                    <button class="nav-link-custom" id="nav-admin" onclick="cambiarVista('admin')">Inventario</button>
+                </nav>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <a href="/swagger-ui/index.html" target="_blank"
+                   class="btn btn-sm btn-outline-secondary d-none d-sm-inline-flex align-items-center gap-1"
+                   style="border-radius: 4px; font-size: 0.8rem;">
+                    <i class="bi bi-braces"></i> API
+                </a>
+                <button class="btn btn-ink d-flex align-items-center gap-2"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito">
+                    <i class="bi bi-bag"></i>
+                    <span>Bolsa</span>
+                    <span class="cart-count" id="contador-carrito">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav d-md-none">
+        <button class="nav-link-custom active" id="nav-catalogo-m" onclick="cambiarVista('catalogo')">Catálogo</button>
+        <button class="nav-link-custom" id="nav-pedidos-m" onclick="cambiarVista('pedidos')">Pedidos</button>
+        <button class="nav-link-custom" id="nav-admin-m" onclick="cambiarVista('admin')">Inventario</button>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <p class="hero-eyebrow">Equipamiento · Cursos · Servicio técnico</p>
+                <h1>Todo para bajar al agua.</h1>
+                <p class="hero-sub">
+                    Reguladores, trajes húmedos y secos, computadoras y óptica subacuática.
+                    Asesoramiento de buzos activos y envíos a todo el país.
+                </p>
+                <div class="hero-meta">
+                    <span><i class="bi bi-box-seam"></i> Stock real</span>
+                    <span><i class="bi bi-tools"></i> Servicio autorizado</span>
+                    <span><i class="bi bi-truck"></i> Envíos nacionales</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main -->
+<main class="container my-4 pb-5">
+
+    <!-- VISTA CATÁLOGO -->
+    <section id="vista-catalogo">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <div class="filter-bar" id="filtros-categorias">
+                <button class="filter-chip active" onclick="seleccionarCategoria('', this)">Todos</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Máscaras', this)">Máscaras</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Aletas', this)">Aletas</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Trajes', this)">Trajes</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Reguladores', this)">Reguladores</button>
+                <button class="filter-chip" onclick="seleccionarCategoria('Accesorios', this)">Accesorios</button>
+            </div>
+
+            <div class="search-wrap">
+                <i class="bi bi-search"></i>
+                <input type="text" id="buscador-productos" class="search-input"
+                       placeholder="Buscar equipo o marca..."
+                       oninput="filtrarLocalmente()">
+            </div>
+        </div>
+
+        <div class="row g-3 g-md-4" id="grid-productos"></div>
+    </section>
+
+    <!-- VISTA PEDIDOS -->
+    <section id="vista-pedidos" class="d-none">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <div>
+                <h2 class="h3 mb-1">Pedidos</h2>
+                <p class="text-muted small mb-0">Historial de órdenes registradas en la tienda.</p>
+            </div>
+        </div>
+
+        <div class="panel-box p-0 overflow-hidden">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th>Orden</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th class="text-end"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-pedidos"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA ADMIN -->
+    <section id="vista-admin" class="d-none">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="panel-box">
+                    <h2 class="h4 mb-1">Nuevo producto</h2>
+                    <p class="text-muted small mb-4">Cargá un equipo al inventario de la tienda.</p>
+
+                    <form id="form-producto" onsubmit="crearProducto(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" id="prod-nombre" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Marca</label>
+                                <input type="text" id="prod-marca" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Categoría</label>
+                                <select id="prod-categoria" class="form-select" required>
+                                    <option>Máscaras</option>
+                                    <option>Aletas</option>
+                                    <option>Trajes</option>
+                                    <option>Reguladores</option>
+                                    <option>Accesorios</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Talle</label>
+                                <input type="text" id="prod-talle" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Precio (ARS)</label>
+                                <input type="number" id="prod-precio" class="form-control" min="0" step="0.01" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Stock</label>
+                                <input type="number" id="prod-stock" class="form-control" min="0" required>
+                            </div>
+                            <div class="col-12 pt-2">
+                                <button type="submit" class="btn btn-ink w-100">Agregar al catálogo</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <a href="#" class="brand-logo mb-3" onclick="cambiarVista('catalogo'); return false;">
+                    Aqua Pro <span class="brand-tag" style="color: rgba(251,248,240,0.55);">Dive Shop</span>
+                </a>
+                <p class="mb-3" style="max-width: 320px;">
+                    Equipamiento, cursos y servicio técnico desde 2018. Buceo responsable, asesoramiento real.
+                </p>
+                <div class="certs">
+                    <span>PADI</span><span>SSI</span><span>NAUI</span>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-6">
+                <h6>Tienda</h6>
+                <ul>
+                    <li><a href="#" onclick="cambiarVista('catalogo'); return false;">Catálogo completo</a></li>
+                    <li><a href="#">Reguladores</a></li>
+                    <li><a href="#">Trajes</a></li>
+                    <li><a href="#">Computadoras</a></li>
+                    <li><a href="#">Accesorios</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-6">
+                <h6>Servicios</h6>
+                <ul>
+                    <li><a href="#">Cursos PADI</a></li>
+                    <li><a href="#">Servicio técnico</a></li>
+                    <li><a href="#">Carga de tanques</a></li>
+                    <li><a href="#">Alquiler de equipo</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <h6>Contacto</h6>
+                <ul>
+                    <li>Av. Peralta Ramos 1245 · Mar del Plata</li>
+                    <li>Lun a Sáb · 10:00 a 19:00</li>
+                    <li><a href="mailto:hola@aquapro.dive">hola@aquapro.dive</a></li>
+                    <li><a href="tel:+542234951234">+54 223 495 1234</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+            <span>© 2025 Aqua Pro Dive Shop · Todos los derechos reservados</span>
+            <span>Buceá responsable. Certificate antes de bajar.</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Offcanvas: Cart -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" style="width: min(420px, 100vw);">
+    <div class="offcanvas-header border-bottom" style="border-color: var(--line) !important;">
+        <h5 class="offcanvas-title">Tu bolsa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <div class="flex-grow-1" id="lista-carrito"></div>
+
+        <div class="pt-3 mt-3 border-top" style="border-color: var(--line) !important;">
+            <div class="d-flex justify-content-between align-items-baseline mb-3">
+                <span class="text-muted small">Total</span>
+                <span class="serif fs-4" id="total-carrito">$0</span>
+            </div>
+            <label class="form-label">Cliente</label>
+            <select id="select-cliente" class="form-select mb-3"></select>
+            <button class="btn btn-ink w-100" onclick="confirmarPedido()">Confirmar pedido</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body" id="toast-mensaje"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

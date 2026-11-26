@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TiendaBuceoApplication<tienda-buceo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.talentotech.tiendabuceo.TiendaBuceoApplication",
+            "projectName": "tienda-buceo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
